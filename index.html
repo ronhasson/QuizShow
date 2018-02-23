@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Show</title>
+
+</head>
+<script src="server.js"></script>
+
+<body>
+    <h1>hi</h1>
+    <input type="button" value="red" onclick="banana()" />
+
+</body>
+<script>
+    function banana() {
+        io.emit("bgColor", "red")
+    }
+</script>
+<script>
+    var remote = require('electron').remote;
+    document.addEventListener("keydown", function (e) {
+        if (e.which === 123) {
+            remote.getCurrentWindow().toggleDevTools();
+        } else if (e.which === 116) {
+            location.reload();
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Show</title>
+
+</head>
+
+<body id="body">
+    <h1>hi PLAYERUPDARTEAAEDDS</h1>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('bgColor', function (data) {
+        alert(data)
+        document.getElementById("body").style.background = data;
+    });
+</script>
+
+</html>
