@@ -9,6 +9,7 @@
 <script src="server.js"></script>
 
 <body>
+    <span id="ipText"></span>
     <h1>hi</h1>
     <input type="button" value="red" onclick="banana()" />
 
@@ -17,6 +18,7 @@
     function banana() {
         io.emit("bgColor", "red")
     }
+    updateIPtext(ipText);
 </script>
 <script>
     var remote = require('electron').remote;

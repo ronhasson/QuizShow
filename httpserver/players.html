@@ -8,7 +8,10 @@
 </head>
 
 <body id="body">
-    <h1>hi PLAYERUPDARTEAAEDDS</h1>
+    <h1>Login</h1>
+    <input id="nameInput" type="text" placeholder="unique name" />
+    <input id="submit" type="button" value="check and login" />
+    <span id="errorText" style="display:none;">Name already taken</span>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
@@ -17,6 +20,11 @@
         alert(data)
         document.getElementById("body").style.background = data;
     });
+</script>
+<script>
+    function setCookie(cname, cvalue) { //cname = user,color
+        document.cookie = cname + "=" + cvalue + ";path=/";
+    }
 </script>
 
 </html>

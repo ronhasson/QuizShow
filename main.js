@@ -8,8 +8,8 @@ let mainWindow;
 function createWindow() {
 
     mainWindow = new BrowserWindow({
-        width: 580,
-        height: 610,
+        width: 1000,
+        height: 720,
     });
 
     mainWindow.loadURL('file://' + __dirname + '/index.html');

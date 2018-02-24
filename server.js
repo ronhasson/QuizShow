@@ -42,27 +42,7 @@ io.on('connection', function (socket) {
         checkUserName(data);
     });
 
-    socket.on('changeColor', function (color) {
-        console.log('color: ' + color);
-        document.getElementById("particles-js").style.backgroundColor = color;
-    });
-
-    socket.on('secretColor', function (state) {
-        console.log('secret color');
-        document.getElementById("particles-js").className = (state) ? "rainbow" : "notselectable";
-    });
-
-    socket.on('buttonPress', function (button) {
-        getInput(button);
-    });
-    socket.on('slideEvent', function (dir) {
-        getInput(dir);
-    });
 });
-
-function changeRemotePage(page) {
-    io.emit("changePageRemote", page);
-}
 
 function sendEmit(_event, data) { //send to all
     io.emit(_event, data);
@@ -102,7 +82,6 @@ ipcRenderer.on('closeServer', function (event, data) {
 });
 
 function closeServer() {
-    //alert("closing server");
     httpr.close();
 }
 
@@ -132,7 +111,9 @@ function getIP() {
 }
 
 function updateIPtext(id) {
-    document.getElementById(id).innerHTML = "http://" + getIP() + ":" + port;
+    let ipText = "http://" + getIP();
+    ipText += (port != 80 && port != 8080) ? (":" + port) : "";
+    document.getElementById(id).innerHTML = ipText;
 }
 
 function generate_qr_for_ip(id) {
