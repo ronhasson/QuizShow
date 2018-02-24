@@ -6,20 +6,16 @@
     <title>Quiz Show</title>
 
 </head>
-<script src="server.js"></script>
+
 
 <body>
     <span id="ipText"></span>
-    <h1>hi</h1>
+    <h1>List of players:</h1>
+    <p id="player_names"></p>
     <input type="button" value="red" onclick="banana()" />
-
+    <script src="server.js"></script>
 </body>
-<script>
-    function banana() {
-        io.emit("bgColor", "red")
-    }
-    updateIPtext(ipText);
-</script>
+
 <script>
     var remote = require('electron').remote;
     document.addEventListener("keydown", function (e) {
