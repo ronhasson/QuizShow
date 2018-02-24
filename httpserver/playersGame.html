@@ -39,10 +39,9 @@
     //checkCookie()
     //changeThemeColor(getCookie("color"));
     document.getElementById("colorBar").style.backgroundColor = "red" //getCookie("color");
-    document.getElementById("preGameWait").innerHTML = "Hi " + getCookie("user");
+    document.getElementById("preGameWait").innerHTML = "Hi " + getCookie("player_name");
 </script>
 <script>
-    var socket = io();
     socket.on('newQuestion', function (data) {
         console.log(data);
         document.getElementById("qText").innerHTML = data.q_question;

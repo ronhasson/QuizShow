@@ -36,13 +36,13 @@ io.on('connection', function (socket) {
 
         if (playerNameAvailable) {
             sendToSocketId('join_success', player_name, socket.id);
-            players[player_name] = socket.id;
+            //players[player_name] = socket.id;
         } else {
             sendToSocketId('join_fail', player_name, socket.id);
         }
     });
 
-    socket.on('connect', function (player_name) {
+    socket.on('connectUser', function (player_name) {
         console.log(player_name + ' redirected: ' + socket.id);
         players[player_name] = socket.id;
     });

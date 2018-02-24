@@ -3,17 +3,17 @@ var socket = io();
 // fun. join: try to join the game with a player name.
 function join() {
   var player_name = document.getElementById("player_name").value;
-  socket.emit('join', player_name);
+  console.log(socket.emit('join', player_name));
 }
 
 // socketon. join_success: save cookie, redirect to next page.
-socket.on('join_success', function(player_name) {
+socket.on('join_success', function (player_name) {
   setCookie('player_name', player_name);
   window.location.href = "playersGame.html";
 });
 
 // socketon. join_failed: inform the user.
-socket.on('join_fail', function(player_name) {
+socket.on('join_fail', function (player_name) {
   alert('Player name unavailable.');
 });
 
