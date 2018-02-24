@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Show</title>
+
+</head>
+
+<body id="body">
+  <h1>Login</h1>
+  <input id="player_name" type="text" placeholder="unique name" />
+  <input id="submit" type="button" onclick="join()" value="check and login" />
+  <span id="errorText" style="display:none;">Name already taken</span>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <script src="players_login.js"></script>
+</body>
+
+</html>
