@@ -17,44 +17,6 @@
         }
     </style>
 </head>
-<script>
-    function getCookie(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
-
-    function checkCookie() {
-        var user = getCookie("user");
-        if (user != "") {
-            alert("Welcome again " + user);
-        } else {
-            alert("error no cookie(user)")
-            return false;
-        }
-        var color = getCookie("color");
-        if (color != "") {
-            alert("color:  " + color);
-        } else {
-            alert("error no cookie(color)")
-            return false;
-        }
-    }
-
-    function changeThemeColor(ccolor) {
-        var metaThemeColor = document.querySelector("meta[name=theme-color]");
-        metaThemeColor.setAttribute("content", ccolor);
-    }
-</script>
 
 <body>
     <div id="colorBar" style="height:2vh;"></div>
@@ -71,13 +33,14 @@
         </div>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script src="playersGame.js"></script>
 <script>
-    checkCookie()
-    changeThemeColor(getCookie("color"));
+    //checkCookie()
+    //changeThemeColor(getCookie("color"));
     document.getElementById("colorBar").style.backgroundColor = "red" //getCookie("color");
     document.getElementById("preGameWait").innerHTML = "Hi " + getCookie("user");
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
     var socket = io();
     socket.on('newQuestion', function (data) {

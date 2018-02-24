@@ -10,9 +10,10 @@ var io = require('socket.io')(httpr);
 var qr = require('qr-image');
 //var file_loader = require("./apps/townofsalem/js/file_loader.js");
 
+var players = {};
 
 expr.get('/', function (req, res) {
-    res.sendFile(__dirname + '/httpserver' + '/players.html');
+    res.sendFile(__dirname + '/httpserver' + '/players_login.html');
 });
 expr.get('/screen', function (req, res) {
     res.sendFile(__dirname + '/httpserver' + '/screen.html');
@@ -29,21 +30,69 @@ const port = 80;
 io.on('connection', function (socket) {
     console.log(socket.request.connection.remoteAddress + ' connected, and socket id is: ' + socket.id);
 
-    socket.on('requestFromServer', function (data) {
-        window[data.action](data.data);
+    // socketon. join: call fun. check playername avail.
+    socket.on('join', function (player_name) {
+        var playerNameAvailable = isPlayerNameAvailable(player_name);
+
+        if (playerNameAvailable) {
+            sendToSocketId('join_success', player_name, socket.id);
+            players[player_name] = socket.id;
+        } else {
+            sendToSocketId('join_fail', player_name, socket.id);
+        }
     });
 
-    socket.on('join', function (uid) {
-        addPlayer(uid, socket.id);
-        console.log("on join");
+    socket.on('connect', function (player_name) {
+        console.log(player_name + ' redirected: ' + socket.id);
+        players[player_name] = socket.id;
     });
-    socket.on('requestUserN', function (data) {
-        console.log('raeched server.js');
-        checkUserName(data);
-    });
+})
 
+// fun. check player name avail: if no living sockets with player name, then avail. if avail, call add player. If not, call inform unavil.
+function isPlayerNameAvailable(player_name) {
+    if (player_name in players && players[player_name] in io.sockets.sockets) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+
+
+
+
+
+
+
+/*
+  socket.on('requestFromServer', function(data) {
+    window[data.action](data.data);
+  });
+
+  socket.on('join', function(uid) {
+    addPlayer(uid, socket.id);
+    console.log("on join");
+  });
+  socket.on('requestUserN', function(data) {
+    console.log('raeched server.js');
+    checkUserName(data);
+  });
+  */
+/*
 });
 
+socket.on('connect', function(player_name) {
+  players[player_name] = socket.id;
+  document.getElementById('player_names').innerHTML = JSON.stringify(players, null, 4);
+  console.log(players[player_name])
+  sendToSocketId('connected', player_name, players[player_name])
+});
+
+function banana() {
+  io.emit("bgColor", "red");
+}
+*/
 function sendEmit(_event, data) { //send to all
     io.emit(_event, data);
 }

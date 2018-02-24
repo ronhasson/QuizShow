@@ -40,8 +40,6 @@
         }
     </style>
 </head>
-<script src="server.js"></script>
-<script src="questions.js"></script>
 
 <body>
     <span id="ipText"></span>
@@ -53,10 +51,11 @@
         <dl id="olqList"></dl>
     </div>
 </body>
+
+<script src="server.js"></script>
+<script src="questions.js"></script>
+
 <script>
-    function banana() {
-        io.emit("bgColor", "red")
-    }
     updateIPtext("ipText");
 </script>
 <script>
