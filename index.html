@@ -4,23 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiz Show</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 15px;
+        }
 
+        #mainPanel {
+            float: left;
+        }
+
+        #qList {
+            float: right;
+            background-color: lightslategray;
+            height: 94vh;
+            width: 22vw;
+            margin-top: 2vh;
+            overflow-y: scroll;
+            direction: rtl;
+        }
+
+        dt {
+            padding: 6px;
+            border-top: 1px solid black;
+        }
+
+        dd {
+            padding: 1px;
+            -webkit-margin-start: 24px;
+            margin-bottom: 3px;
+        }
+
+        .indexNum {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <script src="server.js"></script>
+<script src="questions.js"></script>
 
 <body>
     <span id="ipText"></span>
-    <h1>hi</h1>
-    <input type="button" value="red" onclick="banana()" />
-
+    <div id="mainPanel">
+        <h1>hi</h1>
+        <input type="button" value="red" onclick="banana()" />
+    </div>
+    <div id="qList">
+        <dl id="olqList"></dl>
+    </div>
 </body>
 <script>
     function banana() {
         io.emit("bgColor", "red")
     }
-    updateIPtext(ipText);
+    updateIPtext("ipText");
 </script>
 <script>
+    var olqlist = document.getElementById("olqList");
+    questionsList.forEach((element, i) => {
+        let elem = document.createElement("dt");
+        let numspan = document.createElement("span");
+        let itext = document.createTextNode(i);
+        numspan.appendChild(itext);
+        numspan.classList.add("indexNum");
+        elem.appendChild(numspan);
+        let qtext = document.createTextNode(". " + element.q_question)
+        elem.appendChild(qtext);
+        olqlist.appendChild(elem);
+
+        let ddans = document.createElement("dd");
+        let anstext = document.createTextNode(element.q_answers[0]);
+        ddans.appendChild(anstext);
+        olqlist.appendChild(ddans);
+
+        let ddtype = document.createElement("dd");
+        let typetext = document.createTextNode(element.q_type);
+        ddtype.appendChild(typetext);
+        if (elem.q_category != undefined) {
+            let cattext = document.createTextNode(element.q_category);
+            ddtype.appendChild(" - " + cattext);
+        }
+        olqlist.appendChild(ddtype);
+
+    });
+</script>
+<script>
+    //F5 and F12
     var remote = require('electron').remote;
     document.addEventListener("keydown", function (e) {
         if (e.which === 123) {

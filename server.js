@@ -77,7 +77,7 @@ httpr.listen(port, function () {
     //generateQRforIP();
 });
 
-ipcRenderer.on('closeServer', function (event, data) {
+require('electron').ipcRenderer.on('closeServer', function (event, data) {
     closeServer();
 });
 

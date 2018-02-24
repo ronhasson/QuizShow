@@ -3,8 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#db5945" />
     <title>Quiz Show</title>
-    <meta name="theme-color" content="black">
+    <style>
+        body {
+            margin: 0;
+            background-color: #111629;
+            color: white;
+        }
+
+        #content {
+            margin: 3%;
+        }
+    </style>
 </head>
 <script>
     function getCookie(cname) {
@@ -32,7 +43,7 @@
         }
         var color = getCookie("color");
         if (color != "") {
-            alert("color:  " + user);
+            alert("color:  " + color);
         } else {
             alert("error no cookie(color)")
             return false;
@@ -46,21 +57,34 @@
 </script>
 
 <body>
-    <div id="colorBar">
+    <div id="colorBar" style="height:2vh;"></div>
+    <div id="content">
+        <div id="preGameWait">
+            <h1 id="preGameName">Hi ????</h1>
+            <h2>the game will start momenterly</h2>
+        </div>
+        <div id="questionScreen">
+            <span id="qText"></span>
+        </div>
+        <div id="scoreBoard">
 
-    </div>
-    <div id="preGameWait">
-        <h1>Hi ????</h1>
-        <h2>the game will start momenterly</h2>
-    </div>
-    <div id="questionScreen">
-
-    </div>
-    <div id="scoreBoard">
-
+        </div>
     </div>
 </body>
-
-
+<script>
+    checkCookie()
+    changeThemeColor(getCookie("color"));
+    document.getElementById("colorBar").style.backgroundColor = "red" //getCookie("color");
+    document.getElementById("preGameWait").innerHTML = "Hi " + getCookie("user");
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('newQuestion', function (data) {
+        console.log(data);
+        document.getElementById("qText").innerHTML = data.q_question;
+        //start timer
+    });
+</script>
 
 </html>
