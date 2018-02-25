@@ -203,6 +203,42 @@ var questionsList = [{
     done: false
   },
   {
+    q_question: 'כיצד כונתה תורת הלחימה של גרמניה הנאצית?',
+    q_answers: [
+      'מלחמת בזק',
+      'מכת ברזל',
+      'פשיטת מחץ',
+      'מתקפת צלב'
+    ],
+    q_type: 'classic',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'לאיזו מדינה יש יותר תושבים?',
+    q_answers: [
+      'תימן',
+      'גואטמלה',
+      'שוויץ',
+      'נרווגיה'
+    ],
+    q_type: 'classic',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מה מהם לא שומש בשיטה ליצור מספרים אקראיים',
+    q_answers: [
+      'גלים בים',
+      'מנורות לבה',
+      'דעיכה רדיואקטיבית',
+      'רעש אטמוספרי'
+    ],
+    q_type: 'finals',
+    q_category: undefined,
+    done: false
+  },
+  {
     q_question: 'מה נותן ליהלום כחול את הצבע שלו?',
     q_answers: [
       'חלק מהאטומי פחמן שלו החולפו באוטמי בורון',

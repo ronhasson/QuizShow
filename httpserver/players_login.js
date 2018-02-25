@@ -7,8 +7,9 @@ function join() {
 }
 
 // socketon. join_success: save cookie, redirect to next page.
-socket.on('join_success', function (player_name) {
-  setCookie('player_name', player_name);
+socket.on('join_success', function (data) {
+  setCookie('player_name', data[0]);
+  setCookie('player_color', data[1]);
   window.location.href = "playersGame.html";
 });
 

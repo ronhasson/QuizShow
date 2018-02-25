@@ -36,9 +36,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script src="playersGame.js"></script>
 <script>
-    //checkCookie()
-    //changeThemeColor(getCookie("color"));
-    document.getElementById("colorBar").style.backgroundColor = "red" //getCookie("color");
+    changeThemeColor(getCookie("player_color"));
+    document.getElementById("colorBar").style.backgroundColor = getCookie("player_color");
     document.getElementById("preGameWait").innerHTML = "Hi " + getCookie("player_name");
 </script>
 <script>

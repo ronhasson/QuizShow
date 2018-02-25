@@ -8,6 +8,8 @@
         body {
             font-family: sans-serif;
             font-size: 15px;
+            color: white;
+            background-color: rgba(54, 57, 62, 1);
         }
 
         #mainPanel {
@@ -16,12 +18,26 @@
 
         #qList {
             float: right;
-            background-color: lightslategray;
+            background-color: rgba(47, 49, 54, 1);
             height: 94vh;
             width: 22vw;
             margin-top: 2vh;
             overflow-y: scroll;
             direction: rtl;
+            border: 1px solid black;
+        }
+
+        #qList::-webkit-scrollbar {
+            width: 0.5em;
+        }
+
+        #qList::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(20, 20, 20, 1);
+        }
+
+        #qList::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 1px solid slategrey;
         }
 
         dt {
@@ -37,6 +53,26 @@
 
         .indexNum {
             font-size: 20px;
+        }
+
+        .classicList {
+            border-right: 4px solid rgb(43, 128, 226);
+        }
+
+        .categoryList {
+            border-right: 4px solid rgb(226, 153, 43);
+        }
+
+        .personalList {
+            border-right: 4px solid rgb(174, 43, 226);
+        }
+
+        .tfList {
+            border-right: 4px solid rgb(43, 226, 150);
+        }
+
+        .finalsList {
+            border-right: 4px solid rgb(226, 43, 43);
         }
     </style>
 </head>
@@ -79,12 +115,28 @@
         let ddtype = document.createElement("dd");
         let typetext = document.createTextNode(element.q_type);
         ddtype.appendChild(typetext);
-        if (elem.q_category != undefined) {
+        if (element.q_category != undefined) {
             let cattext = document.createTextNode(element.q_category);
             ddtype.appendChild(" - " + cattext);
         }
         olqlist.appendChild(ddtype);
-
+        switch (element.q_type) {
+            case "classic":
+                elem.classList.add("classicList");
+                break;
+            case "category":
+                elem.classList.add("categoryList");
+                break;
+            case "personal":
+                elem.classList.add("personalList");
+                break;
+            case "tf":
+                elem.classList.add("tfList");
+                break;
+            case "finals":
+                elem.classList.add("finalsList");
+                break;
+        }
     });
 </script>
 <script>

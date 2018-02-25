@@ -1,13 +1,10 @@
 var socket = io();
 
-console.log(socket.emit("connect", "fakeData"));
-
 function connect() {
   var player_name = getCookie("player_name");
   console.log(player_name);
   if (player_name != "") {
-    console.log("emit connect");
-    console.log(socket.emit('connectUser', player_name));
+    socket.emit('connectUser', player_name);
   }
 }
 
@@ -31,22 +28,22 @@ function checkCookie() {
   if (user != "") {
     alert("Welcome again " + user);
   } else {
-    alert("error no cookie(user)")
+    alert("error no cookie(user)");
     return false;
   }
   var color = getCookie("color");
   if (color != "") {
     alert("color:  " + user);
   } else {
-    alert("error no cookie(color)")
+    alert("error no cookie(color)");
     return false;
   }
 }
-/*
+
 function changeThemeColor(ccolor) {
-    var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", ccolor);
+  var metaThemeColor = document.querySelector("meta[name=theme-color]");
+  metaThemeColor.setAttribute("content", ccolor);
 }
-*/
+
 
 connect();
