@@ -222,8 +222,8 @@ var questionsList = [{
       'שוויץ',
       'נרווגיה'
     ],
-    q_type: 'classic',
-    q_category: undefined,
+    q_type: 'category',
+    q_category: "מדינות",
     done: false
   },
   {
