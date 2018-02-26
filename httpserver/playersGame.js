@@ -7,6 +7,7 @@ function connect() {
     socket.emit('connectUser', player_name);
   }
 }
+connect();
 
 function getCookie(cname) {
   var name = cname + "=";
@@ -45,5 +46,6 @@ function changeThemeColor(ccolor) {
   metaThemeColor.setAttribute("content", ccolor);
 }
 
+socket.on("newQuestion", function (data) {
 
-connect();
+});

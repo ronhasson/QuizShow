@@ -15,6 +15,40 @@
         #content {
             margin: 3%;
         }
+
+        #tPlace {
+            width: 32%;
+            display: inline-block;
+            font-size: 3vh;
+        }
+
+        #tName {
+            width: 32%;
+            display: inline-block;
+            text-align: center;
+            font-size: 4vh;
+        }
+
+        #tScore {
+            width: 32%;
+            display: inline-block;
+            text-align: end;
+            font-size: 3vh;
+        }
+
+        .aBtn {
+            min-width: 44vw;
+            min-height: 10vh;
+            margin: 0.8vw;
+            font-size: 2.5vh;
+        }
+
+        #qText {
+            font-size: 4.5vh;
+            margin-bottom: 5vh;
+            display: block;
+            margin-top: 8vh;
+        }
     </style>
 </head>
 
@@ -26,9 +60,22 @@
             <h2>the game will start momenterly</h2>
         </div>
         <div id="questionScreen">
-            <span id="qText"></span>
+            <div style="width:100%;">
+                <span id="tPlace">place</span>
+                <span id="tName">name</span>
+                <span id="tScore">score</span>
+            </div>
+            <center>
+                <span id="qText">qqqqqqqq</span>
+                <br>
+                <input id="a0" type="button" value="0" class="aBtn" onclick="sendAns(0)">
+                <input id="a1" type="button" value="1" class="aBtn" onclick="sendAns(1)">
+                <br>
+                <input id="a2" type="button" value="2" class="aBtn" onclick="sendAns(2)">
+                <input id="a3" type="button" value="3" class="aBtn" onclick="sendAns(3)">
+            </center>
         </div>
-        <div id="scoreBoard">
+        <div id="endScreen">
 
         </div>
     </div>

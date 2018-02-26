@@ -6,7 +6,7 @@ var questionsList = [{
       '-1/12',
       'לא מוגדר'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -30,7 +30,7 @@ var questionsList = [{
       'אכילת יתר של חלזונות תצבע את עורך בצהוב',
       'אכילת יתר של כסף תצבע את עורך בכסף'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -54,7 +54,7 @@ var questionsList = [{
       'אוסטרליה',
       'ניו זילנד'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -78,7 +78,7 @@ var questionsList = [{
       'ואזארי',
       'איפון'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -90,7 +90,7 @@ var questionsList = [{
       'מגדל שלום',
       'בניין העירייה'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -126,7 +126,7 @@ var questionsList = [{
       'לחי של חמור',
       'עץ תלייה'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -138,7 +138,7 @@ var questionsList = [{
       'אלומיניום',
       'נחושת'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -150,7 +150,7 @@ var questionsList = [{
       'להאכיל פרות עלי מנגו ולאסוף את השתן שלהן בשביל ליצר צהוב-הודי',
       'להרתיח חלזונות ים בשביל ליצור את הצבע טיריאן סגול'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -162,7 +162,7 @@ var questionsList = [{
       'לאנזימים שלהם בקיבה יקח יותר מידי זמן לפרק את המזון, אז הם יגוועו ברעב',
       'הקיבה שלהם תתרחב ותפעיל לחץ על נוירונים קרובים'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -174,7 +174,7 @@ var questionsList = [{
       'בורג',
       'טריז/יתד'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -191,14 +191,14 @@ var questionsList = [{
     done: false
   },
   {
-    q_question: 'על האבן רוזטה רשום טקסט ב3 שפות: כתב חרטומים, כתב דמוני ו?',
+    q_question: 'מי לא כיהן כסגן ראש הממשלה',
     q_answers: [
-      'יוונית עתיקה',
-      'לטינית',
-      'פרסית עתיקה',
-      'עברית מקראית'
+      'אהוד אולמרט',
+      'אביגדור ליברמן',
+      'אלי ישי',
+      'אהוד ברק'
     ],
-    q_type: 'classic',
+    q_type: 'category',
     q_category: undefined,
     done: false
   },
@@ -211,6 +211,224 @@ var questionsList = [{
       'מתקפת צלב'
     ],
     q_type: 'classic',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'איזה מהם אינו נחשב מועד מקראי?',
+    q_answers: [
+      'חנוכה',
+      'יום הכיפורים',
+      'שבועות',
+      'ראש השנה'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'איזה אמן הופיע בישראל?',
+    q_answers: [
+      'ליידי גאגא',
+      'גורילז',
+      'דאפט פאנק',
+      'נירוונה'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מתי נחתם הסכם השלום עם מצרים?',
+    q_answers: [
+      '1979',
+      '1971',
+      '1987',
+      '1991'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מהי אורכה של המדוזה הגדולה ביותר בעולם?',
+    q_answers: [
+      '30 מטר',
+      '15 מטר',
+      '2 מטר',
+      'חצי מטר'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'שטחה של אנגליה הוא?',
+    q_answers: [
+      '131 אלף קמר',
+      '52 אלף קמר',
+      '541 אלף קמר',
+      '367 אלף קמר'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מהו מפל המים הגבוה ביותר בעולם?',
+    q_answers: [
+      'מפלי אנחל בוונצואלה',
+      'מפלי הניאגרה',
+      'מפלי איגוסו בדרום אמריקה',
+      'מפלי ויקטוריה שעל נהר זמבזי'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מהו בוקה?',
+    q_answers: [
+      'הניחוחות הנודפים מהיין',
+      'בד משופשף',
+      'שמיכת פיקה עבה',
+      'סוג של פעילות מינית'
+    ],
+    q_type: 'classic',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: "מהו אורך החיים הממוצע של ג'ירף?",
+    q_answers: [
+      '30 שנה',
+      '50 שנה',
+      '70 שנה',
+      '100 שנה'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מתי ברכת החמה נאמרת?',
+    q_answers: [
+      'אחת ל28 שנה',
+      'כל יום בתפילת שחרית',
+      'בתחילת כל עונת קיץ',
+      'אין תפילה כזאת'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'באיזו שנה נולד מוחמד?',
+    q_answers: [
+      '570',
+      '680 לפני הספירה',
+      '905',
+      '850'
+    ],
+    q_type: 'classic',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'באיזו שנה התגלתה האנטיביוטיקה?',
+    q_answers: [
+      '1928',
+      '1948',
+      '1911',
+      '1961'
+    ],
+    q_type: 'classic',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מי הלחין את היצירה מפצח האגוזים?',
+    q_answers: [
+      'צייקובסקי',
+      'בטהובן',
+      'ברהמס',
+      'פרוקופייב'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מהו באטמנט?',
+    q_answers: [
+      'תרגילי בלט',
+      'עיר בגרמניה',
+      'דמות במחזה צרפתי ידוע',
+      'מקום תיירותי באיטליה'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'רבים מציוריו של קלוד מונה תיארו?',
+    q_answers: [
+      'נופים כפריים ועירוניים',
+      'רקדניות',
+      'חיי איכרים',
+      'חיות במנוסה'
+    ],
+    q_type: 'category',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'אצטרולב הוא כלי עבודה',
+    q_answers: [
+      'לא נכון',
+      'נכון'
+    ],
+    q_type: 'tf',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מיקי ברקוביץ הוא היה שחקן?',
+    q_answers: [
+      'כדורסל',
+      'כדורגל'
+    ],
+    q_type: 'tf',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'הברווזון המכוער נכתב במקור בשפה?',
+    q_answers: [
+      'דנית',
+      'גרמנית'
+    ],
+    q_type: 'tf',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'אם תשפוך מלח אל תוך כוס מים, גובה המים ירד במקום לעלות',
+    q_answers: [
+      'נכון',
+      'לא נכון'
+    ],
+    q_type: 'tf',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'תינוקות שהרגע נולדו לא יכולים לרעוד מקור',
+    q_answers: [
+      'נכון',
+      'לא נכון'
+    ],
+    q_type: 'tf',
     q_category: undefined,
     done: false
   },
@@ -245,6 +463,18 @@ var questionsList = [{
       'יש יותר חנקן מהרגיל בסביבה כשהיהלום נוצר',
       'הוא ספג קרינה מהאדמה',
       'היו תקופות קצרות קרות במהלך ההיווצרות שלו ששינו את המבנה שלו'
+    ],
+    q_type: 'finals',
+    q_category: undefined,
+    done: false
+  },
+  {
+    q_question: 'מה יונים, לעומת רוב שאר הציפורים, יכולות לעשות?',
+    q_answers: [
+      'למצוץ מים ולבלוע אותם',
+      'להימנע מנזק מקרינה קוסמית',
+      'לשרוד בלי מים למשך חודשים',
+      'להוציא את הצואה שלהם בכוח רב'
     ],
     q_type: 'finals',
     q_category: undefined,
