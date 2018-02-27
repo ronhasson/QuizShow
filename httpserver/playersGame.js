@@ -46,6 +46,49 @@ function changeThemeColor(ccolor) {
   metaThemeColor.setAttribute("content", ccolor);
 }
 
-socket.on("newQuestion", function (data) {
-
+socket.on('newQuestion', function (data) {
+  if (document.getElementById("questionScreen").style.display == "none") {
+    document.getElementById("preGameWait").style.display = "none";
+    document.getElementById("endScreen").style.display = "none";
+    document.getElementById("questionScreen").style.display = "";
+  }
+  console.log(data);
+  document.getElementById("qText").innerHTML = data.q_question;
+  document.getElementById("a0").value = data.q_answers[0];
+  document.getElementById("a1").value = data.q_answers[1];
+  document.getElementById("a2").value = data.q_answers[2];
+  document.getElementById("a3").value = data.q_answers[3];
+  if (data.q_category != undefined) {
+    document.getElementById("qCateg").innerHTML = data.q_category;
+  } else {
+    document.getElementById("qCateg").innerHTML = "";
+  }
+  if (data.q_type == "tf") {
+    document.getElementById("a2").style.display = "none";
+    document.getElementById("a3").style.display = "none";
+  } else {
+    document.getElementById("a2").style.display = "";
+    document.getElementById("a3").style.display = "";
+  }
+  if (data.q_type == "tf" || data.q_type == "finals") {
+    allButtonDisabled(true);
+  } else {
+    allButtonDisabled(false);
+    colorBlink();
+  }
+  //start timer
 });
+
+function allButtonDisabled(b) {
+  document.getElementById("a0").disabled = b;
+  document.getElementById("a1").disabled = b;
+  document.getElementById("a2").disabled = b;
+  document.getElementById("a3").disabled = b;
+}
+
+function colorBlink() {
+  document.getElementById("colorBar").style.backgroundColor = "white";
+  setTimeout(() => {
+    document.getElementById("colorBar").style.backgroundColor = getCookie("player_color");
+  }, 400);
+}
