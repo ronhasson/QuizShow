@@ -4,15 +4,55 @@
 <head>
   <meta charset="UTF-8">
   <title>Quiz Show</title>
+  <style>
+    body {
+      background-color: #111629;
+      color: white;
+      font-family: sans-serif;
+    }
 
+    h1 {
+      margin-top: 9vh;
+      font-size: 5vh;
+      z-index: 5;
+    }
+
+    #player_name {
+      text-align: center;
+      height: 3vh;
+      width: 45vw;
+      font-size: 2.4vh;
+      margin-bottom: 7vh;
+      outline: 1em solid #111629a2;
+    }
+
+    #submit {
+      height: 7vh;
+      width: 38vw;
+      font-size: 2.3vh;
+    }
+
+    img {
+      width: 88vw;
+      bottom: 0;
+      position: absolute;
+      display: block;
+      margin-left: 5vw;
+      margin-right: 5vw;
+      z-index: -1;
+    }
+  </style>
 </head>
 
 <body id="body">
-  <h1>Login</h1>
-  <input id="player_name" type="text" placeholder="unique name" />
-  <input id="submit" type="button" onclick="join()" value="check and login" />
-  <span id="errorText" style="display:none;">Name already taken</span>
-
+  <center>
+    <h1>Login</h1>
+    <input id="player_name" type="text" placeholder="unique name" />
+    <br>
+    <input id="submit" type="button" onclick="join()" value="check and login" />
+    <span id="errorText" style="display:none;">Name already taken</span>
+    <img id="maskImg" />
+  </center>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <script src="players_login.js"></script>
 </body>

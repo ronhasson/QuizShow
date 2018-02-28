@@ -1,4 +1,6 @@
 var socket = io();
+var tSeconds = 45;
+var counter;
 
 function connect() {
   var player_name = getCookie("player_name");
@@ -52,6 +54,7 @@ socket.on('newQuestion', function (data) {
     document.getElementById("endScreen").style.display = "none";
     document.getElementById("questionScreen").style.display = "";
   }
+  clearInterval(counter);
   console.log(data);
   document.getElementById("qText").innerHTML = data.q_question;
   document.getElementById("a0").value = data.q_answers[0];
@@ -72,11 +75,16 @@ socket.on('newQuestion', function (data) {
   }
   if (data.q_type == "tf" || data.q_type == "finals") {
     allButtonDisabled(true);
+    document.getElementById("tTimer").style.visibility = "hidden";
   } else {
     allButtonDisabled(false);
+    document.getElementById("tTimer").style.visibility = "";
     colorBlink();
+    //start timer
+    tSeconds = 45;
+    counter = setInterval(timer, 1000);
   }
-  //start timer
+
 });
 
 function allButtonDisabled(b) {
@@ -91,4 +99,16 @@ function colorBlink() {
   setTimeout(() => {
     document.getElementById("colorBar").style.backgroundColor = getCookie("player_color");
   }, 400);
+}
+
+function timer() {
+  tSeconds = tSeconds - 1;
+  document.getElementById("tTimer").innerHTML = tSeconds;
+  if (tSeconds <= 0) {
+    clearInterval(counter);
+    allButtonDisabled(true);
+    //emit fail
+    return;
+  }
+
 }

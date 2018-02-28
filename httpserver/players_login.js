@@ -22,7 +22,8 @@ function setCookie(cname, cvalue) { //cname = user,color
   document.cookie = cname + "=" + cvalue + ";path=/";
 }
 
-
+let imgNum = Math.round(Math.random() * 3 + 1);
+document.getElementById("maskImg").src = "mask" + imgNum + ".png";
 
 
 

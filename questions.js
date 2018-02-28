@@ -318,8 +318,8 @@ var questionsList = [{
       'ברהמס',
       'פרוקופייב'
     ],
-    q_type: 'סול סול-סול-סול לה לה סי סול לה',
-    q_category: undefined,
+    q_type: 'category',
+    q_category: "סול סול-סול-סול לה לה סי סול לה",
     done: false
   },
   {
@@ -330,8 +330,8 @@ var questionsList = [{
       'דמות במחזה צרפתי ידוע',
       'מקום תיירותי באיטליה'
     ],
-    q_type: 'מה??',
-    q_category: undefined,
+    q_type: 'category',
+    q_category: "מה??",
     done: false
   },
   {

@@ -49,7 +49,7 @@ questionsList.forEach((element, i) => {
 function markDone(i) {
     let arr = document.getElementsByClassName("q" + i);
     for (let j = 0; j < arr.length; j++) {
-        arr[j].classList.add("qdone")
+        arr[j].classList.add("qdone");
     }
 }
 
@@ -65,6 +65,7 @@ function sendQuestion() {
     console.log(nq);
 
     io.emit("newQuestion", nq);
+    markDone(i);
 }
 
 function shuffleArray(array) {
