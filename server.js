@@ -85,6 +85,18 @@ function isPlayerConnected(player_name) {
     return playersList[player_name].socket in io.sockets.connected;
 }
 
+function kickPlayer() {
+    var input = document.getElementById("kickInput").value;
+    if (input == undefined || input.length == 0) {
+        console.log("kick unde");
+        return;
+    }
+    sendToSocketId("kicked", undefined, playersList[input].socket);
+    console.log("kicking: " + input);
+    delete playersList[input];
+    document.getElementById("kickInput").value = "";
+}
+
 function hslToRgb(h, s, l) {
     var r, g, b;
 

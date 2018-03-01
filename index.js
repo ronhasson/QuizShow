@@ -86,7 +86,7 @@ var np = [];
 
 function updatePlayersListView() {
     var op = playersList;
-    //var np = [];
+    np = [];
     for (var name in op) {
         np.push([name, op[name].score]);
     }

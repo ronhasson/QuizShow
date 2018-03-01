@@ -133,3 +133,7 @@ function removeAllButtonEffects() {
   removeClass("correct");
   removeClass("wrong");
 }
+
+socket.on("kicked", function () {
+  window.location.href = "players_login.html";
+});
