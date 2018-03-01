@@ -55,14 +55,19 @@ function markDone(i) {
 
 var oq; //original question unsuffeld
 var nq; //suffeld question - sent to players
+var lastQuestionType;
 
 function sendQuestion() {
     let i = document.getElementById("qInput").value;
     if (i == undefined) {
         return;
     }
+
     document.getElementById("qInput").value = "";
     document.getElementsByClassName("q" + i)[0].scrollIntoView();
+
+    resetLastAns();
+    lastQuestionType = questionsList[i].q_type;
 
     oq = questionsList[i];
     nq = JSON.parse(JSON.stringify(oq));

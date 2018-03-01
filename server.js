@@ -46,13 +46,37 @@ io.on('connection', function (socket) {
 
     socket.on("qAns", function (data) {
         if (oq.q_answers[0] == nq.q_answers[data[0]]) {
-            playersList[data[1]].score += 10;
-            sendToSocketId("resAns", [true, playersList[data[1]].score], socket.id);
+            //playersList[data[1]].score += 10;
+            //sendToSocketId("resAns", [true, playersList[data[1]].score], socket.id);
+            playersList[data[1]].lastAns = true;
         } else {
-            sendToSocketId("resAns", [false, playersList[data[1]].score], socket.id);
+            //sendToSocketId("resAns", [false, playersList[data[1]].score], socket.id);
         }
     });
 });
+
+function revealAns() {
+    var score_to_add = 10;
+    if (lastQuestionType == "category") {
+        score_to_add = 15;
+    }
+
+    for (var name in playersList) {
+        if (playersList[name].lastAns) {
+            playersList[name].score += score_to_add;
+            sendToSocketId("resAns", [true, playersList[name].score], playersList[name].socket);
+            playersList[name].lastAns = false;
+        } else {
+            sendToSocketId("resAns", [false, playersList[name].score], playersList[name].socket);
+        }
+    }
+}
+
+function resetLastAns() {
+    for (var name in playersList) {
+        playersList[name].lastAns = false;
+    }
+}
 
 function checkName(player_name, Psocket) {
     if (player_name in playersList) {
@@ -77,7 +101,8 @@ function addPlayer(player_name, Psocket) {
     playersList[player_name] = {
         socket: Psocket,
         color: nColor,
-        score: 0
+        score: 0,
+        lastAns: false
     };
 }
 
