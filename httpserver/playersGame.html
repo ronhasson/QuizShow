@@ -47,6 +47,8 @@
             max-width: 90vw;
             white-space: normal;
             padding: 2vw;
+            border-width: thick;
+            border-style: solid;
         }
 
         #qText {
@@ -69,6 +71,44 @@
 
         h2 {
             font-size: 3vh;
+        }
+
+        .selected {
+            animation: colorRotate 6s linear 0s infinite;
+        }
+
+        .correct {
+            background-color: #4ff54f;
+            border-color: #4ff54f;
+        }
+
+        .wrong {
+            background-color: #fc5050;
+            border-color: #fc5050;
+        }
+
+        @keyframes colorRotate {
+            from {
+                border-color: rgb(255, 0, 0);
+            }
+            16.6% {
+                border-color: rgb(255, 0, 255);
+            }
+            33.3% {
+                border-color: rgb(0, 0, 255);
+            }
+            50% {
+                border-color: rgb(0, 255, 255);
+            }
+            66.6% {
+                border-color: rgb(0, 255, 0);
+            }
+            83.3% {
+                border-color: rgb(255, 255, 0);
+            }
+            to {
+                border-color: rgb(255, 0, 0);
+            }
         }
     </style>
 </head>
@@ -112,6 +152,7 @@
     document.getElementById("colorBar").style.backgroundColor = getCookie("player_color");
     document.getElementById("preGameName").innerHTML = "Hi " + getCookie("player_name");
     document.getElementById("tName").innerHTML = getCookie("player_name");
+    document.getElementById("tScore").innerHTML = getCookie("score");
 </script>
 <script>
 </script>

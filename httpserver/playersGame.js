@@ -1,9 +1,10 @@
 var socket = io();
-var tSeconds = 45;
+var tSeconds;
 var counter;
+var player_name;
 
 function connect() {
-  var player_name = getCookie("player_name");
+  player_name = getCookie("player_name");
   console.log(player_name);
   if (player_name != "") {
     socket.emit('connectUser', player_name);
@@ -26,21 +27,8 @@ function getCookie(cname) {
   return "";
 }
 
-function checkCookie() {
-  var user = getCookie("user");
-  if (user != "") {
-    alert("Welcome again " + user);
-  } else {
-    alert("error no cookie(user)");
-    return false;
-  }
-  var color = getCookie("color");
-  if (color != "") {
-    alert("color:  " + user);
-  } else {
-    alert("error no cookie(color)");
-    return false;
-  }
+function setCookie(cname, cvalue) { //cname = user,color
+  document.cookie = cname + "=" + cvalue + ";path=/";
 }
 
 function changeThemeColor(ccolor) {
@@ -54,6 +42,7 @@ socket.on('newQuestion', function (data) {
     document.getElementById("endScreen").style.display = "none";
     document.getElementById("questionScreen").style.display = "";
   }
+  removeAllButtonEffects();
   clearInterval(counter);
   console.log(data);
   document.getElementById("qText").innerHTML = data.q_question;
@@ -111,4 +100,36 @@ function timer() {
     return;
   }
 
+}
+
+function sendAns(i) {
+  document.getElementById("a" + i).classList.add("selected");
+  allButtonDisabled(true);
+  clearInterval(counter);
+  socket.emit("qAns", [i, player_name]);
+}
+
+socket.on("resAns", function (data) {
+  var sBtn = document.getElementsByClassName("selected")[0];
+  removeAllButtonEffects();
+  if (data[0]) {
+    sBtn.classList.add("correct");
+    setCookie("score", data[1]);
+    document.getElementById("tScore").innerHTML = getCookie("score");
+  } else {
+    sBtn.classList.add("wrong");
+  }
+});
+
+function removeClass(rclass) {
+  document.getElementById("a0").classList.remove(rclass);
+  document.getElementById("a1").classList.remove(rclass);
+  document.getElementById("a2").classList.remove(rclass);
+  document.getElementById("a3").classList.remove(rclass);
+}
+
+function removeAllButtonEffects() {
+  removeClass("selected");
+  removeClass("correct");
+  removeClass("wrong");
 }

@@ -53,13 +53,19 @@ function markDone(i) {
     }
 }
 
+var oq; //original question unsuffeld
+var nq; //suffeld question - sent to players
+
 function sendQuestion() {
     let i = document.getElementById("qInput").value;
+    if (i == undefined) {
+        return;
+    }
     document.getElementById("qInput").value = "";
     document.getElementsByClassName("q" + i)[0].scrollIntoView();
 
-    let oq = questionsList[i];
-    let nq = JSON.parse(JSON.stringify(oq));
+    oq = questionsList[i];
+    nq = JSON.parse(JSON.stringify(oq));
     shuffleArray(nq.q_answers);
     console.log(oq);
     console.log(nq);
@@ -73,4 +79,34 @@ function shuffleArray(array) {
         let j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+}
+
+setInterval(updatePlayersListView, 2000);
+var np = [];
+
+function updatePlayersListView() {
+    var op = playersList;
+    //var np = [];
+    for (var name in op) {
+        np.push([name, op[name].score]);
+    }
+    np.sort(function (a, b) {
+        return parseInt(b[1]) - parseInt(a[1]);
+    });
+    //console.log(np);
+    var vPlayerlist = document.getElementById("cPlayersList");
+    vPlayerlist.innerHTML = "";
+    np.forEach((element, i) => {
+        let elem = document.createElement("li");
+        let statspan = document.createElement("span");
+        let stat = (isPlayerConnected(np[i][0])) ? "@" : "X";
+        let itext = document.createTextNode("[" + stat + "]");
+        statspan.appendChild(itext);
+        let statclass = (isPlayerConnected(np[i][0])) ? "connected" : "disconnected";
+        statspan.classList.add(statclass);
+        elem.appendChild(statspan);
+        let qtext = document.createTextNode(" " + element[0] + ": " + element[1]);
+        elem.appendChild(qtext);
+        vPlayerlist.appendChild(elem);
+    });
 }

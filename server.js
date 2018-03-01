@@ -10,8 +10,7 @@ var io = require('socket.io')(httpr);
 var qr = require('qr-image');
 //var file_loader = require("./apps/townofsalem/js/file_loader.js");
 
-var playersSockets = [];
-var playersData = [];
+var playersList = [];
 
 expr.get('/', function (req, res) {
     res.sendFile(__dirname + '/httpserver' + '/players_login.html');
@@ -20,7 +19,6 @@ expr.get('/screen', function (req, res) {
     res.sendFile(__dirname + '/httpserver' + '/screen.html');
 });
 expr.get(/^(.+)$/, function (req, res) {
-    console.log(req);
     res.sendFile(__dirname + '/httpserver' + req.params[0]);
 });
 //file_loader.init(expr);
@@ -33,11 +31,9 @@ io.on('connection', function (socket) {
 
     // socketon. join: call fun. check playername avail.
     socket.on('join', function (player_name) {
-        var playerNameAvailable = isPlayerNameAvailable(player_name);
 
-        if (playerNameAvailable) {
-            sendToSocketId('join_success', [player_name, hexColorGen()], socket.id);
-            //players[player_name] = socket.id;
+        if (checkName(player_name, socket.id)) {
+            sendToSocketId('join_success', [player_name, playersList[player_name].color, playersList[player_name].score], socket.id);
         } else {
             sendToSocketId('join_fail', player_name, socket.id);
         }
@@ -45,17 +41,48 @@ io.on('connection', function (socket) {
 
     socket.on('connectUser', function (player_name) {
         console.log(player_name + ' redirected: ' + socket.id);
-        playersSockets[player_name] = socket.id;
+        playersList[player_name].socket = socket.id; //replace the login socket with the new page socket
+    });
+
+    socket.on("qAns", function (data) {
+        if (oq.q_answers[0] == nq.q_answers[data[0]]) {
+            playersList[data[1]].score += 10;
+            sendToSocketId("resAns", [true, playersList[data[1]].score], socket.id);
+        } else {
+            sendToSocketId("resAns", [false, playersList[data[1]].score], socket.id);
+        }
     });
 });
 
-// fun. check player name avail: if no living sockets with player name, then avail. if avail, call add player. If not, call inform unavil.
-function isPlayerNameAvailable(player_name) {
-    if (player_name in playersSockets && playersSockets[player_name] in io.sockets.sockets) { //check if io.sockets.connected is the right one instad of io.sockets.sockets
-        return false;
+function checkName(player_name, Psocket) {
+    if (player_name in playersList) {
+        return checkSocket(player_name, Psocket);
     } else {
+        addPlayer(player_name, Psocket);
         return true;
     }
+}
+
+function checkSocket(player_name, Psocket) {
+    if (isPlayerConnected(player_name)) {
+        return false; //the original user is still connected
+    } else {
+        playersList[player_name].socket = Psocket; //replace the old unconnected socket
+        return true;
+    }
+}
+
+function addPlayer(player_name, Psocket) {
+    var nColor = hexColorGen();
+    playersList[player_name] = {
+        socket: Psocket,
+        color: nColor,
+        score: 0
+    };
+}
+
+function isPlayerConnected(player_name) {
+    return playersList[player_name].socket in io.sockets.connected;
 }
 
 function hslToRgb(h, s, l) {

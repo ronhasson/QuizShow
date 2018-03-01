@@ -3,13 +3,16 @@ var socket = io();
 // fun. join: try to join the game with a player name.
 function join() {
   var player_name = document.getElementById("player_name").value;
-  console.log(socket.emit('join', player_name));
+  if (player_name.length > 1) {
+    console.log(socket.emit('join', player_name));
+  }
 }
 
 // socketon. join_success: save cookie, redirect to next page.
 socket.on('join_success', function (data) {
   setCookie('player_name', data[0]);
   setCookie('player_color', data[1]);
+  setCookie('score', data[2]);
   window.location.href = "playersGame.html";
 });
 

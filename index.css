@@ -85,3 +85,16 @@ dd {
     color: rgb(119, 119, 119) !important;
     font-size: 13px !important;
 }
+
+.connected {
+    color: rgb(217, 255, 0);
+}
+
+.disconnected {
+    color: rgb(221, 14, 14);
+}
+
+#cPlayers {
+    font-family: "Lucida Console", Monaco, monospace;
+    line-height: 20px;
+}
