@@ -2,6 +2,8 @@ var socket = io();
 var tSeconds;
 var counter;
 var player_name;
+var isPersonalQuestion = false;
+var q_num;
 
 function connect() {
   player_name = getCookie("player_name");
@@ -37,6 +39,10 @@ function changeThemeColor(ccolor) {
 }
 
 socket.on('newQuestion', function (data) {
+  console.log(isPersonalQuestion);
+  q_num = data[0];
+  question = data[1];
+
   if (document.getElementById("questionScreen").style.display == "none") {
     document.getElementById("preGameWait").style.display = "none";
     document.getElementById("endScreen").style.display = "none";
@@ -44,25 +50,15 @@ socket.on('newQuestion', function (data) {
   }
   removeAllButtonEffects();
   clearInterval(counter);
-  console.log(data);
-  document.getElementById("qText").innerHTML = data.q_question;
-  document.getElementById("a0").value = data.q_answers[0];
-  document.getElementById("a1").value = data.q_answers[1];
-  document.getElementById("a2").value = data.q_answers[2];
-  document.getElementById("a3").value = data.q_answers[3];
-  if (data.q_category != undefined) {
-    document.getElementById("qCateg").innerHTML = data.q_category;
-  } else {
-    document.getElementById("qCateg").innerHTML = "";
-  }
-  if (data.q_type == "tf") {
-    document.getElementById("a2").style.display = "none";
-    document.getElementById("a3").style.display = "none";
-  } else {
-    document.getElementById("a2").style.display = "";
-    document.getElementById("a3").style.display = "";
-  }
-  if (data.q_type == "tf" || data.q_type == "finals") {
+  console.log(question);
+  document.getElementById("qText").innerHTML = question.q_question;
+  document.getElementById("a0").value = question.q_answers[0];
+  document.getElementById("a1").value = question.q_answers[1];
+  document.getElementById("a2").value = question.q_answers[2];
+  document.getElementById("a3").value = question.q_answers[3];
+
+
+  if (question.q_type == "tf" || question.q_type == "finals" || isPersonalQuestion) {
     allButtonDisabled(true);
     document.getElementById("tTimer").style.visibility = "hidden";
   } else {
@@ -73,6 +69,24 @@ socket.on('newQuestion', function (data) {
     tSeconds = 45;
     counter = setInterval(timer, 1000);
   }
+  if (question.correct_answer == undefined) {
+    isPersonalQuestion = true;
+  } else {
+    isPersonalQuestion = false;
+  }
+  if (question.q_category != undefined) {
+    document.getElementById("qCateg").innerHTML = question.q_category;
+  } else {
+    document.getElementById("qCateg").innerHTML = "";
+  }
+  if (question.q_type == "tf") {
+    document.getElementById("a2").style.display = "none";
+    document.getElementById("a3").style.display = "none";
+  } else {
+    document.getElementById("a2").style.display = "";
+    document.getElementById("a3").style.display = "";
+  }
+
 
 });
 
@@ -106,7 +120,11 @@ function sendAns(i) {
   document.getElementById("a" + i).classList.add("selected");
   allButtonDisabled(true);
   clearInterval(counter);
-  socket.emit("qAns", [i, player_name]);
+  if (isPersonalQuestion) {
+    socket.emit("setAns", [q_num, i]);
+  } else {
+    socket.emit("qAns", [i, player_name]);
+  }
 }
 
 socket.on("resAns", function (data) {
