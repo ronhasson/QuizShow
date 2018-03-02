@@ -149,7 +149,7 @@ function sendPersonalQuestion() {
   }
 
   let playerName = document.getElementById("personalQuestionPlayerName").value;
-  if (playerName == undefined) {
+  if (!(playerName in playersList)) {
       return;
   }
 

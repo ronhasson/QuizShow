@@ -39,6 +39,7 @@ function changeThemeColor(ccolor) {
 }
 
 socket.on('newQuestion', function (data) {
+  console.log(isPersonalQuestion);
   q_num = data[0];
   question = data[1];
 
@@ -55,6 +56,19 @@ socket.on('newQuestion', function (data) {
   document.getElementById("a1").value = question.q_answers[1];
   document.getElementById("a2").value = question.q_answers[2];
   document.getElementById("a3").value = question.q_answers[3];
+
+
+  if (question.q_type == "tf" || question.q_type == "finals" || isPersonalQuestion) {
+    allButtonDisabled(true);
+    document.getElementById("tTimer").style.visibility = "hidden";
+  } else {
+    allButtonDisabled(false);
+    document.getElementById("tTimer").style.visibility = "";
+    colorBlink();
+    //start timer
+    tSeconds = 45;
+    counter = setInterval(timer, 1000);
+  }
   if (question.correct_answer == undefined) {
     isPersonalQuestion = true;
   }
@@ -73,17 +87,7 @@ socket.on('newQuestion', function (data) {
     document.getElementById("a2").style.display = "";
     document.getElementById("a3").style.display = "";
   }
-  if (question.q_type == "tf" || question.q_type == "finals") {
-    allButtonDisabled(true);
-    document.getElementById("tTimer").style.visibility = "hidden";
-  } else {
-    allButtonDisabled(false);
-    document.getElementById("tTimer").style.visibility = "";
-    colorBlink();
-    //start timer
-    tSeconds = 45;
-    counter = setInterval(timer, 1000);
-  }
+
 
 });
 
