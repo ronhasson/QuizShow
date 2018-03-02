@@ -17,7 +17,11 @@
             <input type="button" value="kick" onclick="kickPlayer()" />
             <input type="text" id="kickInput" placeholder="player name to kick" />
             <ol id="cPlayersList"></ol>
+            <input type="button" value="Send personal question" onclick="sendPersonalQuestion()" />
+            <input type="number" id="personalQuestionNum" placeholder="q" min="0">
+            <input type="text" id="personalQuestionPlayerName" placeholder="player name" />
         </div>
+
         <span id="ipText"></span>
     </div>
     <div id="qList">
@@ -25,8 +29,8 @@
     </div>
 </body>
 
-<script src="server.js"></script>
 <script src="questions.js"></script>
+<script src="server.js"></script>
 <script src="index.js"></script>
 
 <script>

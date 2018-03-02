@@ -26,6 +26,66 @@ expr.get(/^(.+)$/, function (req, res) {
 
 const port = 80;
 
+
+
+
+function showQuestionList() {
+  var olqlist = document.getElementById("olqList");
+
+  while (olqlist.firstChild) {
+    olqlist.removeChild(olqlist.firstChild);
+  }
+
+  questionsList.forEach((element, i) => {
+      let elem = document.createElement("dt");
+      let numspan = document.createElement("span");
+      let itext = document.createTextNode(i);
+      numspan.appendChild(itext);
+      numspan.classList.add("indexNum");
+      elem.appendChild(numspan);
+      let qtext = document.createTextNode(". " + element.q_question)
+      elem.appendChild(qtext);
+      olqlist.appendChild(elem);
+
+      let ddans = document.createElement("dd");
+      let anstext = document.createTextNode(element.correct_answer);
+      ddans.appendChild(anstext);
+      olqlist.appendChild(ddans);
+
+      let ddtype = document.createElement("dd");
+      let typetext = document.createTextNode(element.q_type);
+      ddtype.appendChild(typetext);
+      if (element.q_category != undefined) {
+          let cattext = document.createTextNode(" - " + element.q_category);
+          ddtype.appendChild(cattext);
+      }
+      olqlist.appendChild(ddtype);
+
+      elem.classList.add("q" + i);
+      ddans.classList.add("q" + i);
+      ddtype.classList.add("q" + i);
+      switch (element.q_type) {
+          case "classic":
+              elem.classList.add("classicList");
+              break;
+          case "category":
+              elem.classList.add("categoryList");
+              break;
+          case "personal":
+              elem.classList.add("personalList");
+              break;
+          case "tf":
+              elem.classList.add("tfList");
+              break;
+          case "finals":
+              elem.classList.add("finalsList");
+              break;
+      }
+  });
+}
+
+showQuestionList();
+
 io.on('connection', function (socket) {
     console.log(socket.request.connection.remoteAddress + ' connected, and socket id is: ' + socket.id);
 
@@ -45,7 +105,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on("qAns", function (data) {
-        if (oq.q_answers[0] == nq.q_answers[data[0]]) {
+        if (oq.correct_answer == nq.q_answers[data[0]]) {
             //playersList[data[1]].score += 10;
             //sendToSocketId("resAns", [true, playersList[data[1]].score], socket.id);
             playersList[data[1]].lastAns = true;
@@ -53,7 +113,58 @@ io.on('connection', function (socket) {
             //sendToSocketId("resAns", [false, playersList[data[1]].score], socket.id);
         }
     });
+
+    socket.on("setAns", function (data) {
+      questionsList[data[0]].correct_answer = questionsList[data[0]].q_answers[data[1]];
+      showQuestionList();
+    });
 });
+
+function sendQuestion() {
+    let i = document.getElementById("qInput").value;
+    if (i == undefined) {
+        return;
+    }
+
+    document.getElementById("qInput").value = "";
+    document.getElementsByClassName("q" + i)[0].scrollIntoView();
+
+    resetLastAns();
+    lastQuestionType = questionsList[i].q_type;
+
+    oq = questionsList[i];
+    nq = JSON.parse(JSON.stringify(oq));
+    shuffleArray(nq.q_answers);
+    console.log(oq);
+    console.log(nq);
+
+    io.emit("newQuestion", [i, nq]);
+    markDone(i);
+}
+
+function sendPersonalQuestion() {
+  let i = document.getElementById("personalQuestionNum").value;
+  if (i == undefined) {
+      return;
+  }
+
+  let playerName = document.getElementById("personalQuestionPlayerName").value;
+  if (playerName == undefined) {
+      return;
+  }
+
+  document.getElementById("personalQuestionNum").value = "";
+  document.getElementsByClassName("q" + i)[0].scrollIntoView();
+  document.getElementById("personalQuestionPlayerName").value = "";
+
+  questionsList[i].q_question = questionsList[i].q_question.replace('{}', playerName);
+  oq = questionsList[i];
+  nq = questionsList[i];
+  console.log(oq);
+  console.log(nq);
+
+  sendToSocketId("newQuestion", [i, oq], playersList[playerName].socket);
+}
 
 function revealAns() {
     var score_to_add = 10;

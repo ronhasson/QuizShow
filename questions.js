@@ -8,6 +8,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: '570',
       done: false
     },
     {
@@ -20,6 +21,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: '1928',
       done: false
     },
     {
@@ -32,6 +34,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'הסנטר',
       done: false
     },
     {
@@ -44,6 +47,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'בצל',
       done: false
     },
     {
@@ -56,6 +60,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'ניחוח הנודף מיין',
       done: false
     },
     {
@@ -68,6 +73,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'בנט - כיפת ברזל לעם ישראל',
       done: false
     },
     {
@@ -80,6 +86,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'כתב יווני עתיק',
       done: false
     },
     {
@@ -92,6 +99,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'מלחמת בזק',
       done: false
     },
     {
@@ -104,6 +112,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'ניו זילנד',
       done: false
     },
     {
@@ -116,6 +125,7 @@ var questionsList = [{
       ],
       q_type: 'classic',
       q_category: undefined,
+      correct_answer: 'עיט',
       done: false
     },
     {
@@ -128,6 +138,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "אומנויות לחימה!",
+      correct_answer: 'וואקמה',
       done: false
     },
     {
@@ -140,6 +151,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "תל אביב",
+      correct_answer: 'מגדלי עזריאלי',
       done: false
     },
     {
@@ -152,6 +164,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "בתנך הרגו הרבה",
+      correct_answer: 'כוס רעל',
       done: false
     },
     {
@@ -164,6 +177,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "מתמטיכיף",
+      correct_answer: '1',
       done: false
     },
     {
@@ -176,6 +190,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "יסודות(לא, לא אווטר)",
+      correct_answer: 'כסף',
       done: false
     },
     {
@@ -188,6 +203,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "וככה זה לא נוצר",
+      correct_answer: 'ייבוש דם פילים ליצירת הצבע "Dragon\'s blood"',
       done: false
     },
     {
@@ -200,6 +216,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "מכונות",
+      correct_answer: 'בוכנה',
       done: false
     },
     {
@@ -212,6 +229,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "פוליטיקה",
+      correct_answer: 'אהוד אולמרט',
       done: false
     },
     {
@@ -224,6 +242,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "חגים ומועדים",
+      correct_answer: 'חנוכה',
       done: false
     },
     {
@@ -236,7 +255,21 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "להקות ואמנים",
+      correct_answer: 'ליידי גאגא',
       done: false
+    },
+    {
+    q_question: 'למה רוה לא כאן הלילה?',
+    q_answers: [
+      'בהצגה עם המשפחה ומוסר ד"ש',
+      'די נמאס לו מכולם ומוסר ד"ש',
+      'סגר שבת כי הפקיר נשק ומוסר ד"ש',
+      'הוא כאן ומחופש לדן'
+    ],
+    q_type: 'category',
+    q_category: "רווה",
+    current_answer: 'בהצגה עם המשפחה ומוסר ד"ש',
+    done: false
     },
     {
       q_question: 'מתי נחתם הסכם השלום עם מצרים?',
@@ -248,6 +281,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "שלום שלום",
+      correct_answer: '1979',
       done: false
     },
     {
@@ -260,18 +294,20 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "אמאאא, נעקצתי",
+      correct_answer: '30 מטר',
       done: false
     },
     {
       q_question: 'שטחה של אנגליה הוא?',
       q_answers: [
-        '131 אלף קמ"ר"',
-        '52 אלף קמ"ר"',
-        '541 אלף קמ"ר"',
-        '367 אלף קמ"ר"'
+        '131 אלף קמ"ר',
+        '52 אלף קמ"ר',
+        '541 אלף קמ"ר',
+        '367 אלף קמ"ר'
       ],
       q_type: 'category',
       q_category: "סימבה, כל האדמה הזו שלך",
+      correct_answer: '131 אלף קמ"ר',
       done: false
     },
     {
@@ -284,6 +320,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "מי בא לראפטינג?",
+      correct_answer: 'מפלי אנחל בוונצואלה',
       done: false
     },
     {
@@ -296,6 +333,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "חיות יבשה",
+      correct_answer: '30 שנה',
       done: false
     },
     {
@@ -308,6 +346,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "הלו, אלוהים?",
+      correct_answer: 'אחת ל-28 שנה',
       done: false
     },
     {
@@ -320,6 +359,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "סול סול-סול-סול לה לה סי סול לה",
+      correct_answer: 'צ\'ייקובסקי',
       done: false
     },
     {
@@ -332,6 +372,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "Quoi??",
+      correct_answer: 'תרגיל בלט',
       done: false
     },
     {
@@ -344,6 +385,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "אומנות או נמות",
+      correct_answer: 'נופים כפריים ועירוניים',
       done: false
     },
     {
@@ -356,6 +398,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "מדינות",
+      correct_answer: 'תימן',
       done: false
     },
     {
@@ -368,6 +411,7 @@ var questionsList = [{
       ],
       q_type: 'category',
       q_category: "פוטר!",
+      correct_answer: 'אבדה קדברה',
       done: false
     },
     {
@@ -380,6 +424,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -392,6 +437,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -404,6 +450,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -416,6 +463,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -428,6 +476,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -440,6 +489,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -452,6 +502,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -464,6 +515,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -476,6 +528,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -488,6 +541,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -500,6 +554,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -512,6 +567,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -524,6 +580,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -536,6 +593,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -548,6 +606,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -560,6 +619,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -572,6 +632,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -584,6 +645,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -596,6 +658,7 @@ var questionsList = [{
       ],
       q_type: 'personal',
       q_category: undefined,
+      correct_answer: undefined,
       done: false
     },
     {
@@ -606,6 +669,7 @@ var questionsList = [{
       ],
       q_type: 'tf',
       q_category: undefined,
+      correct_answer: 'לא נכון',
       done: false
     },
     {
@@ -616,6 +680,7 @@ var questionsList = [{
       ],
       q_type: 'tf',
       q_category: undefined,
+      correct_answer: 'כדורסל',
       done: false
     },
     {
@@ -626,6 +691,7 @@ var questionsList = [{
       ],
       q_type: 'tf',
       q_category: undefined,
+      correct_answer: 'דנית',
       done: false
     },
     {
@@ -636,6 +702,7 @@ var questionsList = [{
       ],
       q_type: 'tf',
       q_category: undefined,
+      correct_answer: 'נכון',
       done: false
     },
     {
@@ -646,6 +713,7 @@ var questionsList = [{
       ],
       q_type: 'tf',
       q_category: undefined,
+      correct_answer: 'נכון',
       done: false
     },
     {
@@ -658,6 +726,7 @@ var questionsList = [{
       ],
       q_type: 'finals',
       q_category: undefined,
+      correct_answer: 'אכילת יתר של לובסטרים תצבע את עורך בוורוד',
       done: false
     },
     {
@@ -670,6 +739,7 @@ var questionsList = [{
       ],
       q_type: 'finals',
       q_category: undefined,
+      correct_answer: 'פינלנד',
       done: false
     },
     {
@@ -682,6 +752,7 @@ var questionsList = [{
       ],
       q_type: 'finals',
       q_category: undefined,
+      correct_answer: 'הוושט שלו יתרחב, מה שיגרום לנזק מוחי',
       done: false
     },
     {
@@ -694,6 +765,7 @@ var questionsList = [{
       ],
       q_type: 'finals',
       q_category: undefined,
+      correct_answer: 'גלים בים',
       done: false
     },
     {
@@ -706,6 +778,7 @@ var questionsList = [{
       ],
       q_type: 'finals',
       q_category: undefined,
+      correct_answer: 'חלק מאטומי הפחמן שלו הוחלפו באטומי בורון',
       done: false
     },
     {
@@ -718,6 +791,7 @@ var questionsList = [{
       ],
       q_type: 'finals',
       q_category: undefined,
+      correct_answer: 'למצוץ מים ולבלוע אותם',
       done: false
     },
     {
@@ -730,6 +804,7 @@ var questionsList = [{
       ],
       q_type: 'finals',
       q_category: undefined,
+      correct_answer: 'בורקינה פאסו',
       done: false
     },
   {
@@ -742,6 +817,7 @@ var questionsList = [{
     ],
     q_type: 'finals',
     q_category: undefined,
+    correct_answer: 'ח\'אלד משעל',
     done: false
   },
   {
@@ -754,6 +830,7 @@ var questionsList = [{
     ],
     q_type: 'finals',
     q_category: undefined,
+    correct_answer: 'בספר תווים של יצירה מוזיקלית',
     done: false
   },
   {
@@ -766,6 +843,7 @@ var questionsList = [{
     ],
     q_type: 'finals',
     q_category: undefined,
+    correct_answer: 'האגרוף שלך',
     done: false
   },
 ];
