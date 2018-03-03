@@ -10,7 +10,15 @@
 </head>
 
 <body id="body">
-    <div id="questionScreen">
+    <div id="preGameWait" class="rainbow">
+        <center>
+            <h1>ברוכים הבאים לחידון פורים</h1>
+            <img id="calamity" src="calamity.png">
+            <h2>החידון מייד יתחיל, לבנתיים היכנסו ל:</h2>
+            <h1 id="ipText"></h1>
+        </center>
+    </div>
+    <div id="questionScreen" style="display:none">
         <div style="width:100%;">
             <span id="tTimer">time</span>
         </div>
@@ -25,5 +33,8 @@
         </center>
     </div>
 </body>
+<script>
+    document.getElementById("ipText").innerHTML = window.location.hostname;
+</script>
 
 </html>

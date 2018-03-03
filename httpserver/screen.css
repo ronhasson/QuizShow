@@ -14,6 +14,15 @@ body {
     transition: 2s ease-in;
 }
 
+#calamity {
+    height: 42vh;
+    padding-bottom: 6vh;
+}
+
+#preGameWait {
+    height: 100%;
+}
+
 .aBtn {
     width: 50vw;
     margin: 0.8vw;
@@ -25,8 +34,9 @@ body {
 
 #tTimer {
     position: absolute;
-    margin-right: 4vw;
+    padding-right: 4vw;
     font-size: 3vw;
+    padding-top: 3vh;
 }
 
 #qText {
@@ -45,47 +55,47 @@ body {
 
 h1 {
     font-size: 5vh;
+    margin: 0;
+    padding: 6vh;
 }
 
 h2 {
     font-size: 3vh;
 }
 
-.selected {
-    animation: colorRotate 6s linear 0s infinite;
+.rainbow {
+    animation: colorRotate 25s linear 0s infinite;
 }
 
 .correct {
-    background-color: #4ff54f;
-    border-color: #4ff54f;
+    color: #4ff54f;
 }
 
 .wrong {
-    background-color: #fc5050;
-    border-color: #fc5050;
+    color: #ee4141;
 }
 
 @keyframes colorRotate {
     from {
-        border-color: rgb(255, 0, 0);
+        background-color: rgb(192, 2, 2);
     }
     16.6% {
-        border-color: rgb(255, 0, 255);
+        background-color: rgb(137, 0, 179);
     }
     33.3% {
-        border-color: rgb(0, 0, 255);
+        background-color: rgb(19, 44, 185);
     }
     50% {
-        border-color: rgb(0, 255, 255);
+        background-color: rgb(48, 199, 199);
     }
     66.6% {
-        border-color: rgb(0, 255, 0);
+        background-color: rgb(22, 182, 22);
     }
     83.3% {
-        border-color: rgb(255, 255, 0);
+        background-color: rgb(194, 194, 37);
     }
     to {
-        border-color: rgb(255, 0, 0);
+        background-color: rgb(192, 2, 2);
     }
 }
 

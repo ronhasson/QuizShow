@@ -268,7 +268,7 @@ var questionsList = [{
     ],
     q_type: 'category',
     q_category: "רווה",
-    current_answer: 'בהצגה עם המשפחה ומוסר ד"ש',
+    correct_answer: 'בהצגה עם המשפחה ומוסר ד"ש',
     done: false
   },
   {

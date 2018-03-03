@@ -271,37 +271,6 @@ function hexColorGen() {
 
 
 
-
-
-
-/*
-  socket.on('requestFromServer', function(data) {
-    window[data.action](data.data);
-  });
-
-  socket.on('join', function(uid) {
-    addPlayer(uid, socket.id);
-    console.log("on join");
-  });
-  socket.on('requestUserN', function(data) {
-    console.log('raeched server.js');
-    checkUserName(data);
-  });
-  */
-/*
-});
-
-socket.on('connect', function(player_name) {
-  players[player_name] = socket.id;
-  document.getElementById('player_names').innerHTML = JSON.stringify(players, null, 4);
-  console.log(players[player_name])
-  sendToSocketId('connected', player_name, players[player_name])
-});
-
-function banana() {
-  io.emit("bgColor", "red");
-}
-*/
 function sendEmit(_event, data) { //send to all
     io.emit(_event, data);
 }

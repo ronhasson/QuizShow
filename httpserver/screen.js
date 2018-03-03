@@ -6,35 +6,35 @@ var bazzerColors = ["rgb(59, 0, 144)", "rgb(0, 114, 144)", "rgb(141, 144, 0)"];
 var bazzerLock = false;
 
 socket.on('newQuestion', function (data) {
-    /*if (document.getElementById("questionScreen").style.display == "none") {
-         document.getElementById("preGameWait").style.display = "none";
-         document.getElementById("endScreen").style.display = "none";
-         document.getElementById("questionScreen").style.display = "";
-     }*/
+    if (document.getElementById("questionScreen").style.display == "none") {
+        document.getElementById("preGameWait").style.display = "none";
+        //document.getElementById("endScreen").style.display = "none";
+        document.getElementById("questionScreen").style.display = "";
+    }
     removeAllButtonEffects();
     document.getElementById("body").classList.remove("classicBG");
     document.getElementById("body").classList.remove("categBG");
     document.getElementById("body").classList.remove("persBG");
     clearInterval(counter);
     console.log(data);
-    document.getElementById("qText").innerHTML = data.q_question;
-    document.getElementById("a0").innerHTML = "א. " + data.q_answers[0];
-    document.getElementById("a1").innerHTML = "ב. " + data.q_answers[1];
-    document.getElementById("a2").innerHTML = "ג. " + data.q_answers[2];
-    document.getElementById("a3").innerHTML = "ד. " + data.q_answers[3];
-    if (data.q_category != undefined) {
-        document.getElementById("qCateg").innerHTML = data.q_category;
+    document.getElementById("qText").innerHTML = data[1].q_question;
+    document.getElementById("a0").innerHTML = "א. " + data[1].q_answers[0];
+    document.getElementById("a1").innerHTML = "ב. " + data[1].q_answers[1];
+    document.getElementById("a2").innerHTML = "ג. " + data[1].q_answers[2];
+    document.getElementById("a3").innerHTML = "ד. " + data[1].q_answers[3];
+    if (data[1].q_category != undefined) {
+        document.getElementById("qCateg").innerHTML = data[1].q_category;
     } else {
         document.getElementById("qCateg").innerHTML = "<br>";
     }
-    if (data.q_type == "tf") {
+    if (data[1].q_type == "tf") {
         document.getElementById("a2").style.display = "none";
         document.getElementById("a3").style.display = "none";
     } else {
         document.getElementById("a2").style.display = "";
         document.getElementById("a3").style.display = "";
     }
-    if (data.q_type == "tf" || data.q_type == "finals") {
+    if (data[1].q_type == "tf" || data[1].q_type == "finals") {
         document.getElementById("tTimer").style.visibility = "hidden";
         bazzerLock = false;
     } else {
@@ -42,13 +42,13 @@ socket.on('newQuestion', function (data) {
         //start timer
         tSeconds = 45;
         counter = setInterval(timer, 1000);
-        if (data.q_type == "classic") {
+        if (data[1].q_type == "classic") {
             document.getElementById("body").classList.add("classicBG");
         }
-        if (data.q_type == "category") {
+        if (data[1].q_type == "category") {
             document.getElementById("body").classList.add("categBG");
         }
-        if (data.q_type == "personal") {
+        if (data[1].q_type == "personal") {
             document.getElementById("body").classList.add("persBG");
         }
     }
@@ -60,7 +60,6 @@ function timer() {
     document.getElementById("tTimer").innerHTML = tSeconds;
     if (tSeconds <= 0) {
         clearInterval(counter);
-        allButtonDisabled(true);
         //emit fail
         return;
     }
