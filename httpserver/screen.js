@@ -78,3 +78,29 @@ function removeAllButtonEffects() {
     removeClass("correct");
     removeClass("wrong");
 }
+
+document.addEventListener("keydown", function (e) {
+    if (bazzerLock) {
+        return;
+    }
+    if (e.which === 65) { //A
+        document.getElementById("body").style.backgroundColor = bazzerColors[0];
+        lockBazzer();
+    }
+    if (e.which === 66) { //B
+        document.getElementById("body").style.backgroundColor = bazzerColors[1];
+        lockBazzer();
+    }
+    if (e.which === 76) { //L
+        document.getElementById("body").style.backgroundColor = bazzerColors[2];
+        lockBazzer();
+    }
+});
+
+function lockBazzer() {
+    bazzerLock = true;
+    setTimeout(function () {
+        bazzerLock = false;
+        document.getElementById("body").style.backgroundColor = "";
+    }, 5000);
+}
