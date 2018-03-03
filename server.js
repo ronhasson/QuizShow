@@ -241,10 +241,6 @@ function revealButton() {
     }
 }
 
-function sendLeaderBoards() {
-    io.emit("leaderBoards", np);
-}
-
 function resetLastAns() {
     for (var name in playersList) {
         playersList[name].lastAns = false;
@@ -276,8 +272,23 @@ function lMinus5(){
 }
 
 function changeScore(playerInputId, change) {
-  current_score = parseInt(document.getElementById(playerInputId).value);
+  var current_score = parseInt(document.getElementById(playerInputId).value);
   document.getElementById(playerInputId).value = current_score + change;
+}
+
+function showNormalScoreboard() {
+  return;
+  // TO DO (RON)
+}
+
+function showFinalsScoreboard(){
+  var scoreboard = [
+    ['A', parseInt(document.getElementById('aScore').value), "rgb(59, 0, 144)"],
+    ['B', parseInt(document.getElementById('bScore').value), "rgb(0, 114, 144)"],
+    ['L', parseInt(document.getElementById('lScore').value), "rgb(141, 144, 0)"],
+  ]
+
+  io.emit("leaderBoards", scoreboard);
 }
 
 function checkName(player_name, Psocket) {

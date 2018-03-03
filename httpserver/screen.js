@@ -93,12 +93,19 @@ socket.on("leaderBoards", function (np) {
     document.getElementById("place3").innerHTML = np[2][0] + " - " + np[2][1];
     document.getElementById("place3").style.backgroundColor = np[2][2];
 
-    document.getElementById("place4").innerHTML = np[3][0] + " - " + np[3][1];
-    document.getElementById("place4").style.backgroundColor = np[3][2];
+    if (np.length > 3) {
+      document.getElementById("place4").style.visibility = "visible";
+      document.getElementById("place4").innerHTML = np[3][0] + " - " + np[3][1];
+      document.getElementById("place4").style.backgroundColor = np[3][2];
 
-    document.getElementById("place5").innerHTML = np[4][0] + " - " + np[4][1];
-    document.getElementById("place5").style.backgroundColor = np[4][2];
-
+      document.getElementById("place5").style.visibility = "visible";
+      document.getElementById("place5").innerHTML = np[4][0] + " - " + np[4][1];
+      document.getElementById("place5").style.backgroundColor = np[4][2];
+    }
+    else {
+      document.getElementById("place4").style.visibility = "hidden";
+      document.getElementById("place5").style.visibility = "hidden";
+    }
 });
 
 function timer() {
