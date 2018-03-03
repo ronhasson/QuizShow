@@ -247,48 +247,47 @@ function resetLastAns() {
     }
 }
 
-function aPlus10(){
-  changeScore('aScore', 10);
+function aPlus10() {
+    changeScore('aScore', 10);
 }
 
-function aMinus5(){
-  changeScore('aScore', -5);
+function aMinus5() {
+    changeScore('aScore', -5);
 }
 
-function bPlus10(){
-  changeScore('bScore', 10);
+function bPlus10() {
+    changeScore('bScore', 10);
 }
 
-function bMinus5(){
-  changeScore('bScore', -5);
+function bMinus5() {
+    changeScore('bScore', -5);
 }
 
-function lPlus10(){
-  changeScore('lScore', 10);
+function lPlus10() {
+    changeScore('lScore', 10);
 }
 
-function lMinus5(){
-  changeScore('lScore', -5);
+function lMinus5() {
+    changeScore('lScore', -5);
 }
 
 function changeScore(playerInputId, change) {
-  var current_score = parseInt(document.getElementById(playerInputId).value);
-  document.getElementById(playerInputId).value = current_score + change;
+    var current_score = parseInt(document.getElementById(playerInputId).value);
+    document.getElementById(playerInputId).value = current_score + change;
 }
 
 function showNormalScoreboard() {
-  return;
-  // TO DO (RON)
+    io.emit("leaderBoards", np);
 }
 
-function showFinalsScoreboard(){
-  var scoreboard = [
-    ['A', parseInt(document.getElementById('aScore').value), "rgb(59, 0, 144)"],
-    ['B', parseInt(document.getElementById('bScore').value), "rgb(0, 114, 144)"],
-    ['L', parseInt(document.getElementById('lScore').value), "rgb(141, 144, 0)"],
-  ]
+function showFinalsScoreboard() {
+    var scoreboard = [
+        ['A', parseInt(document.getElementById('aScore').value), "rgb(105, 2, 255)"],
+        ['B', parseInt(document.getElementById('bScore').value), "rgb(0, 246, 255)"],
+        ['L', parseInt(document.getElementById('lScore').value), "rgb(226, 231, 0)"],
+    ]
 
-  io.emit("leaderBoards", scoreboard);
+    io.emit("leaderBoards", scoreboard);
 }
 
 function checkName(player_name, Psocket) {
