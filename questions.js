@@ -725,7 +725,7 @@ var questionsList = [{
       'אכילת יתר של כסף תצבע את עורך בכסף'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'אכילת יתר של לובסטרים תצבע את עורך בוורוד',
     done: false
   },
@@ -738,7 +738,7 @@ var questionsList = [{
       'ניו זילנד'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'פינלנד',
     done: false
   },
@@ -751,7 +751,7 @@ var questionsList = [{
       'הקיבה שלו תתרחב ותפעיל לחץ על נוירונים קרובים'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'הוושט שלו יתרחב, מה שיגרום לנזק מוחי',
     done: false
   },
@@ -764,7 +764,7 @@ var questionsList = [{
       'רעש אטמוספרי'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'גלים בים',
     done: false
   },
@@ -777,7 +777,7 @@ var questionsList = [{
       'תקופות קור קצרות במהלך היווצרותו ששינו את המבנה שלו'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'חלק מאטומי הפחמן שלו הוחלפו באטומי בורון',
     done: false
   },
@@ -790,7 +790,7 @@ var questionsList = [{
       'להוציא את הצואה שלהן בכוח רב'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'למצוץ מים ולבלוע אותם',
     done: false
   },
@@ -803,7 +803,7 @@ var questionsList = [{
       'ליבריה'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'בורקינה פאסו',
     done: false
   },
@@ -816,7 +816,7 @@ var questionsList = [{
       'מוחמד דף'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'ח\'אלד משעל',
     done: false
   },
@@ -829,7 +829,7 @@ var questionsList = [{
       'בספר על ציירים איטלקיים'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'בספר תווים של יצירה מוזיקלית',
     done: false
   },
@@ -842,7 +842,7 @@ var questionsList = [{
       'האוזן שלך'
     ],
     q_type: 'finals',
-    q_category: undefined,
+    q_category: "הגמר",
     correct_answer: 'האגרוף שלך',
     done: false
   },
