@@ -247,6 +247,35 @@ function resetLastAns() {
     }
 }
 
+function aPlus10(){
+  changeScore('aScore', 10);
+}
+
+function aMinus5(){
+  changeScore('aScore', -5);
+}
+
+function bPlus10(){
+  changeScore('bScore', 10);
+}
+
+function bMinus5(){
+  changeScore('bScore', -5);
+}
+
+function lPlus10(){
+  changeScore('lScore', 10);
+}
+
+function lMinus5(){
+  changeScore('lScore', -5);
+}
+
+function changeScore(playerInputId, change) {
+  current_score = parseInt(document.getElementById(playerInputId).value);
+  document.getElementById(playerInputId).value = current_score + change;
+}
+
 function checkName(player_name, Psocket) {
     if (player_name in playersList) {
         return checkSocket(player_name, Psocket);

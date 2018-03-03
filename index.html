@@ -40,6 +40,33 @@
             <input type="number" id="personalQuestionNum" placeholder="q" min="0">
             <input type="text" id="personalQuestionPlayerName" placeholder="player name" />
         </div>
+        <div class="divSeperator" style="border: 1px solid #32CD32;">
+          <span>Finals</span>
+          <br>
+          <br>
+          <table>
+            <tr>
+              <td>A</td>
+              <td><input type="number" id="aScore" value=0></td>
+              <td><input type="button" value="+10" onclick="aPlus10()" /></td>
+              <td><input type="button" value="-5" onclick="aMinus5()" /></td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td><input type="number" id="bScore" value=0></td>
+              <td><input type="button" value="+10" onclick="bPlus10()" /></td>
+              <td><input type="button" value="-5" onclick="bMinus5()" /></td>
+            </tr>
+            <tr>
+              <td>L</td>
+              <td><input type="number" id="lScore" value=0></td>
+              <td><input type="button" value="+10" onclick="lPlus10()" /></td>
+              <td><input type="button" value="-5" onclick="lMinus5()" /></td>
+            </tr>
+          </table>
+          <br>
+          <input type="button" value="Show scoreboard" onclick="showFinalsScoreboard()">
+        </div>
         <div id="kickDiv" class="divSeperator" style="border: 1px solid #c04f4f;">
             <input type="button" value="kick" onclick="kickPlayer()" />
             <input type="text" id="kickInput" placeholder="player name to kick" />
