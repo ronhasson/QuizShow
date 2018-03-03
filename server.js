@@ -142,6 +142,28 @@ function sendQuestion() {
     markDone(i);
 }
 
+function sendCategories() {
+  possibleQuestionIndexes = [];
+  for (var i = 0; i < questionsList.length; i++) {
+    if (!questionsList[i].done && questionsList[i].q_type == "category") {
+      possibleQuestionIndexes.push(i);
+    }
+  }
+
+  shuffleArray(possibleQuestionIndexes);
+  chosenQuestionIndexes = possibleQuestionIndexes.slice(0, 3);
+
+  document.getElementById('category1').innerHTML = chosenQuestionIndexes[0] + " - " + questionsList[chosenQuestionIndexes[0]].q_category;
+  document.getElementById('category2').innerHTML = chosenQuestionIndexes[1] + " - " + questionsList[chosenQuestionIndexes[1]].q_category;
+  document.getElementById('category3').innerHTML = chosenQuestionIndexes[2] + " - " + questionsList[chosenQuestionIndexes[2]].q_category;
+
+  chosenCategories = [questionsList[chosenQuestionIndexes[0]].q_category,
+                      questionsList[chosenQuestionIndexes[1]].q_category,
+                      questionsList[chosenQuestionIndexes[2]].q_category];
+
+  // TO DO: Send "chosenCategories" to screen.
+}
+
 function sendPersonalQuestion() {
     let i = document.getElementById("personalQuestionNum").value;
     if (i == undefined) {

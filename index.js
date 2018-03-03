@@ -3,6 +3,8 @@ function markDone(i) {
     for (let j = 0; j < arr.length; j++) {
         arr[j].classList.add("qdone");
     }
+
+    questionsList[i].done = true;
 }
 
 var oq; //original question unsuffeld
