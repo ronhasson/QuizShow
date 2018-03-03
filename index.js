@@ -21,7 +21,7 @@ function updatePlayersListView() {
     var op = playersList;
     np = [];
     for (var name in op) {
-        np.push([name, op[name].score]);
+        np.push([name, op[name].score, op[name].color]);
     }
     np.sort(function (a, b) {
         return parseInt(b[1]) - parseInt(a[1]);
