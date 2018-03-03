@@ -44,6 +44,22 @@ body {
     box-shadow: 0px 16px #1a191999;
 }
 
+#leaderboardsView {
+    height: 100%;
+    background-color: rgb(34, 34, 34);
+}
+
+.placeBtn {
+    display: block;
+    width: 31vw;
+    height: 12vh;
+    border-radius: 91px;
+    font-size: 4vh;
+    margin-bottom: 5vh;
+    border-style: groove;
+    box-shadow: 0px 16px #1a191999;
+}
+
 .aBtn {
     width: 50vw;
     margin: 0.8vw;

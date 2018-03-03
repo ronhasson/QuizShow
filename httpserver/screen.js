@@ -9,6 +9,7 @@ socket.on('newQuestion', function (data) {
     if (document.getElementById("questionScreen").style.display == "none") {
         document.getElementById("preGameWait").style.display = "none";
         document.getElementById("categSelect").style.display = "none";
+        document.getElementById("leaderboardsView").style.display = "none";
         document.getElementById("questionScreen").style.display = "";
     }
     removeAllButtonEffects();
@@ -67,11 +68,37 @@ socket.on("screenCateg", function (arr) {
     if (document.getElementById("categSelect").style.display == "none") {
         document.getElementById("preGameWait").style.display = "none";
         document.getElementById("questionScreen").style.display = "none";
+        document.getElementById("leaderboardsView").style.display = "none";
         document.getElementById("categSelect").style.display = "";
     }
     document.getElementById("categ1").innerHTML = arr[0];
     document.getElementById("categ2").innerHTML = arr[1];
     document.getElementById("categ3").innerHTML = arr[2];
+});
+
+socket.on("leaderBoards", function (np) {
+    if (document.getElementById("leaderboardsView").style.display == "none") {
+        document.getElementById("preGameWait").style.display = "none";
+        document.getElementById("questionScreen").style.display = "none";
+        document.getElementById("leaderboardsView").style.display = "";
+        document.getElementById("categSelect").style.display = "none";
+    }
+    console.log(np);
+    document.getElementById("place1").innerHTML = np[0][0] + " - " + np[0][1];
+    document.getElementById("place1").style.backgroundColor = np[0][2];
+
+    document.getElementById("place2").innerHTML = np[1][0] + " - " + np[1][1];
+    document.getElementById("place2").style.backgroundColor = np[1][2];
+
+    document.getElementById("place3").innerHTML = np[2][0] + " - " + np[2][1];
+    document.getElementById("place3").style.backgroundColor = np[2][2];
+
+    document.getElementById("place4").innerHTML = np[3][0] + " - " + np[3][1];
+    document.getElementById("place4").style.backgroundColor = np[3][2];
+
+    document.getElementById("place5").innerHTML = np[4][0] + " - " + np[4][1];
+    document.getElementById("place5").style.backgroundColor = np[4][2];
+
 });
 
 function timer() {

@@ -241,6 +241,10 @@ function revealButton() {
     }
 }
 
+function sendLeaderBoards() {
+    io.emit("leaderBoards", np);
+}
+
 function resetLastAns() {
     for (var name in playersList) {
         playersList[name].lastAns = false;
