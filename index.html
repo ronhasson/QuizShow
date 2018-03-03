@@ -9,23 +9,41 @@
 
 <body>
     <div id="mainPanel">
-        <h1>hi</h1>
-        <input type="button" value="Send question" onclick="sendQuestion()" />
-        <input type="number" id="qInput" placeholder="q" min="0">
-        <input type="button" value="reveal asnwer" onclick="revealAns()" />
+        <h1>Quiz control panel</h1>
+        <div class="divSeperator" style="width: 69vw;border: 1px solid #7d7d7d;">
+            <span>General</span>
+            <br>
+            <br>
+            <input type="button" value="Send question" onclick="sendQuestion()" />
+            <input type="number" id="qInput" placeholder="q" min="0">
+            <span style="margin-left: 2vw;margin-right:2vw">|</span>
+            <input type="button" value="reveal asnwer" onclick="revealAns()" />
+            <span style="margin-left: 2vw;margin-right:2vw">|</span>
+            <input type="button" value="reveal button" onclick="revealButton()" />
+            <input type="number" id="btnRevealInput" placeholder="Btn" min="0" max="3">
+        </div>
         <div id="cPlayers">
-            <input type="button" value="kick" onclick="kickPlayer()" />
-            <input type="text" id="kickInput" placeholder="player name to kick" />
             <ol id="cPlayersList"></ol>
-            <input type="button" value="Send categories" onclick="sendCategories()" /><br/>
-            <span id="category1"></span><br/>
-            <span id="category2"></span><br/>
-            <span id="category3"></span><br/><br/>
+        </div>
+        <div class="divSeperator" style="border: 1px solid #d49a4e;">
+            <span>Categories</span>
+            <br>
+            <br>
+            <input type="button" value="Gen&View categories" onclick="sendCategories()" style="float: left;display: block;" />
+            <span id="categoryQueue" style="display: block;float: left;padding-left: 3vw;"></span>
+        </div>
+        <div class="divSeperator" style="border: 1px solid #c051c4;">
+            <span>Personal</span>
+            <br>
+            <br>
             <input type="button" value="Send personal question" onclick="sendPersonalQuestion()" />
             <input type="number" id="personalQuestionNum" placeholder="q" min="0">
             <input type="text" id="personalQuestionPlayerName" placeholder="player name" />
         </div>
-
+        <div id="kickDiv" class="divSeperator" style="border: 1px solid #c04f4f;">
+            <input type="button" value="kick" onclick="kickPlayer()" />
+            <input type="text" id="kickInput" placeholder="player name to kick" />
+        </div>
         <span id="ipText"></span>
     </div>
     <div id="qList">

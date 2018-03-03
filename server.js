@@ -120,6 +120,10 @@ io.on('connection', function (socket) {
     });
 });
 
+var oq; //original question unsuffeld
+var nq; //suffeld question - sent to players
+var lastQuestionType;
+
 function sendQuestion() {
     let i = document.getElementById("qInput").value;
     if (i == undefined) {
@@ -142,26 +146,34 @@ function sendQuestion() {
     markDone(i);
 }
 
+var possibleQuestionIndexes;
+var chosenCategories;
+
 function sendCategories() {
-  possibleQuestionIndexes = [];
-  for (var i = 0; i < questionsList.length; i++) {
-    if (!questionsList[i].done && questionsList[i].q_type == "category") {
-      possibleQuestionIndexes.push(i);
+    possibleQuestionIndexes = [];
+    for (var i = 0; i < questionsList.length; i++) {
+        if (!questionsList[i].done && questionsList[i].q_type == "category") {
+            possibleQuestionIndexes.push(i);
+        }
     }
-  }
 
-  shuffleArray(possibleQuestionIndexes);
-  chosenQuestionIndexes = possibleQuestionIndexes.slice(0, 3);
+    shuffleArray(possibleQuestionIndexes);
+    chosenQuestionIndexes = possibleQuestionIndexes.slice(0, 3);
 
-  document.getElementById('category1').innerHTML = chosenQuestionIndexes[0] + " - " + questionsList[chosenQuestionIndexes[0]].q_category;
-  document.getElementById('category2').innerHTML = chosenQuestionIndexes[1] + " - " + questionsList[chosenQuestionIndexes[1]].q_category;
-  document.getElementById('category3').innerHTML = chosenQuestionIndexes[2] + " - " + questionsList[chosenQuestionIndexes[2]].q_category;
+    //document.getElementById('category1').innerHTML = chosenQuestionIndexes[0] + " - " + questionsList[chosenQuestionIndexes[0]].q_category;
+    //document.getElementById('category2').innerHTML = chosenQuestionIndexes[1] + " - " + questionsList[chosenQuestionIndexes[1]].q_category;
+    //document.getElementById('category3').innerHTML = chosenQuestionIndexes[2] + " - " + questionsList[chosenQuestionIndexes[2]].q_category;
 
-  chosenCategories = [questionsList[chosenQuestionIndexes[0]].q_category,
-                      questionsList[chosenQuestionIndexes[1]].q_category,
-                      questionsList[chosenQuestionIndexes[2]].q_category];
+    chosenCategories = [questionsList[chosenQuestionIndexes[0]].q_category,
+        questionsList[chosenQuestionIndexes[1]].q_category,
+        questionsList[chosenQuestionIndexes[2]].q_category
+    ];
 
-  // TO DO: Send "chosenCategories" to screen.
+    document.getElementById("categoryQueue").innerHTML = "" + chosenQuestionIndexes[0] + ": " + chosenCategories[0] + "<br> ";
+    document.getElementById("categoryQueue").innerHTML += chosenQuestionIndexes[1] + ": " + chosenCategories[1] + "<br> ";
+    document.getElementById("categoryQueue").innerHTML += chosenQuestionIndexes[2] + ": " + chosenCategories[2] + "";
+
+    // TO DO: Send "chosenCategories" to screen.
 }
 
 function sendPersonalQuestion() {
@@ -202,6 +214,28 @@ function revealAns() {
         } else {
             sendToSocketId("resAns", [false, playersList[name].score], playersList[name].socket);
         }
+    }
+
+    io.emit("screenReveal", [findCorrectAnsIndex(), true]);
+}
+
+function findCorrectAnsIndex() {
+    var correctIndex;
+    nq.q_answers.forEach(function (temp, i) {
+        if (oq.correct_answer == temp) {
+            correctIndex = i;
+        }
+    });
+    return correctIndex;
+}
+
+function revealButton() {
+    var input = document.getElementById("btnRevealInput").value;
+    document.getElementById("btnRevealInput").value = "";
+    if (oq.correct_answer == nq.q_answers[input]) {
+        io.emit("screenReveal", [input, true]);
+    } else {
+        io.emit("screenReveal", [input, false]);
     }
 }
 

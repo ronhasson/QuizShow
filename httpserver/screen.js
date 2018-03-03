@@ -55,6 +55,15 @@ socket.on('newQuestion', function (data) {
 
 });
 
+socket.on("screenReveal", function (data) {
+    console.log(data);
+    if (data[1]) {
+        document.getElementById("a" + data[0]).classList.add("correct");
+    } else {
+        document.getElementById("a" + data[0]).classList.add("wrong");
+    }
+});
+
 function timer() {
     tSeconds = tSeconds - 1;
     document.getElementById("tTimer").innerHTML = tSeconds;

@@ -7,10 +7,6 @@ function markDone(i) {
     questionsList[i].done = true;
 }
 
-var oq; //original question unsuffeld
-var nq; //suffeld question - sent to players
-var lastQuestionType;
-
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));

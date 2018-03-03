@@ -14,12 +14,14 @@ body {
 
 #mainPanel {
     float: left;
+    width: 74vw;
 }
 
 #ipText {
     display: block;
     position: absolute;
-    bottom: 9px;
+    bottom: 4px;
+    right: 48px;
 }
 
 #qList {
@@ -97,4 +99,38 @@ dd {
 #cPlayers {
     font-family: "Lucida Console", Monaco, monospace;
     line-height: 20px;
+    overflow-y: overlay;
+    height: 71vh;
+    width: 28vw;
+    background-color: rgba(47, 49, 54, 1);
+    border: 1px solid black;
+    float: left;
+    margin-left: 9px;
+}
+
+#cPlayers::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+#cPlayers::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(20, 20, 20, 1);
+}
+
+#cPlayers::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.divSeperator {
+    float: left;
+    padding-left: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-right: 2vw;
+    border: 1px solid #7d7d7d;
+    margin: 9px;
+}
+
+input[type="number"] {
+    width: 4vw;
 }
