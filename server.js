@@ -174,6 +174,8 @@ function sendCategories() {
     document.getElementById("categoryQueue").innerHTML += chosenQuestionIndexes[2] + ": " + chosenCategories[2] + "";
 
     // TO DO: Send "chosenCategories" to screen.
+
+    io.emit("screenCateg", chosenCategories);
 }
 
 function sendPersonalQuestion() {

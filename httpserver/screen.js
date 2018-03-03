@@ -8,7 +8,7 @@ var bazzerLock = false;
 socket.on('newQuestion', function (data) {
     if (document.getElementById("questionScreen").style.display == "none") {
         document.getElementById("preGameWait").style.display = "none";
-        //document.getElementById("endScreen").style.display = "none";
+        document.getElementById("categSelect").style.display = "none";
         document.getElementById("questionScreen").style.display = "";
     }
     removeAllButtonEffects();
@@ -62,6 +62,16 @@ socket.on("screenReveal", function (data) {
     } else {
         document.getElementById("a" + data[0]).classList.add("wrong");
     }
+});
+socket.on("screenCateg", function (arr) {
+    if (document.getElementById("categSelect").style.display == "none") {
+        document.getElementById("preGameWait").style.display = "none";
+        document.getElementById("questionScreen").style.display = "none";
+        document.getElementById("categSelect").style.display = "";
+    }
+    document.getElementById("categ1").innerHTML = arr[0];
+    document.getElementById("categ2").innerHTML = arr[1];
+    document.getElementById("categ3").innerHTML = arr[2];
 });
 
 function timer() {
